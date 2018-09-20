@@ -1,0 +1,65 @@
+﻿@model List<News>
+@{
+    ViewData["Title"] = "新闻列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalPage = (int)ViewBag.TotalPage;//总页数
+    int currentPage = (int)ViewBag.CurrentPage;//当前页
+    int number = 3;//这里的数必须是奇数，用来显示一排有几个页码的
+    int firstPage = currentPage - ((number - 1) / 2);
+    int lastPage = currentPage + ((number - 1) / 2);
+    if (firstPage < 1)
+    {
+        firstPage = 1;
+    }
+    if (lastPage > totalPage)
+    {
+        lastPage = totalPage;
+
+        if (currentPage > totalPage - ((number - 1) / 2) && currentPage <= totalPage && totalPage >= number)
+        {
+            firstPage = lastPage - (number - 1);
+        }
+    }
+    else
+    {
+        if (currentPage < 1 + ((number - 1) / 2) && currentPage >= 1 && totalPage >= number)
+        {
+            lastPage = number;
+        }
+    }
+}
+
+<div class="main_banner" style="background-image: url(/img/1843_src.jpg);">
+    <img src="img/xin.jpg" alt="">
+</div>
+<!--主体-->
+<div>您的当前位置——<a href="/News/Index" style="color:red">逐梦新闻</a></div>
+<div class="beijing1">
+    <ul class="news">
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <li>
+                <div class="xin_wu">
+                    <a href="/News/Detail/@Model[i].ID">@Model[i].Title</a>
+                    <span>@Model[i].AddTime</span>
+                </div>
+            </li>
+        }
+    </ul>
+    <div class="page">
+        <a href="/News/Index/@(currentPage-1<1?1:currentPage-1)" class="page_prev"> << </a>
+        @for (int i = firstPage; i <= lastPage; i++)
+        {
+            if (i == currentPage)
+            {
+                <a href="/News/Index/@(currentPage)" class="thisclass">@(currentPage)</a>
+            }
+            else
+            {
+                <a href="/News/Index/@(i)">@(i)</a>
+            }
+        }
+        <a href="/News/Index/@(currentPage+1>totalPage?totalPage:currentPage+1)" class="page_next"> >> </a>
+    </div>
+</div>
+

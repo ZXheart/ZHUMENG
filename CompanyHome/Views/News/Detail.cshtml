@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "新闻详情";
+    var news = ViewBag.News as News;
+    //var comments = ViewBag.Comments as List<Comment>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main_banner" style="background-image: url(/img/1843_src.jpg);">
+    <img src="img/lie.jpg" alt="">
+</div>
+<div>您的当前位置——<a href="/News/Index">逐梦新闻</a>——<a href="#" style="color:red">当前新闻</a></div>
+<div class="beijing1">
+    <div class="qi_feng_yi">
+        <h1>@news.Title</h1>
+        <p>发布时间：@news.AddTime 责任编辑：admin</p>
+    </div>
+    <div class="qi_feng_er">
+        <h4 style="text-indent: 2em;">@news.Title</h4>
+        <p>@Html.Raw(news.Content)</p>
+    </div>
+</div>
+

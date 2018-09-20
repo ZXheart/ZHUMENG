@@ -1,0 +1,19 @@
+﻿@model List<JoinUs>
+@{
+    ViewData["Title"] = "加入我们";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main_banner" style="background-image: url(/img/1849_src.jpg);">
+    <img src="img/guan.jpg" alt="">
+</div>
+<div class="beijing1">
+    <hr />
+    <div class="service" escape="false">
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            @Html.Raw(Model[i].Content)
+        }
+    </div>
+</div>
+
+

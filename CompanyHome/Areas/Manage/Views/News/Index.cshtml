@@ -1,0 +1,103 @@
+﻿@model List<News>
+@{
+    ViewData["Title"] = "新闻管理";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+<form method="post" action="">
+    <div class="panel admin-panel">
+        <div class="panel-head"><strong class="icon-reorder"> @ViewData["Title"]</strong></div>
+        <div class="padding border-bottom">
+            <ul class="search">
+                <li>
+                    <button onclick="window.location.href='Add'" type="button" class="button border-blue"><span class="icon-plus"></span> 添加新闻</button>
+                </li>
+            </ul>
+        </div>
+        <table class="table table-hover text-center">
+            <tr>
+                <th width="120">ID</th>
+                <th>标题</th>
+                <th width="120">时间</th>
+                <th>删除</th>
+                <th>编辑</th>
+            </tr>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+            <tr>
+                <td><input type="checkbox" id="only" name="Test" value="@Model[i].ID"/>@Model[i].ID</td>
+                <td>@Model[i].Title</td>
+                <td>@Model[i].AddTime.ToShortDateString()</td>
+                <td><div class="button-group"> <a class="button border-red" href="javascript:void(0)" onclick="return del(@Model[i].ID)"><span class="icon-trash-o"></span>删除</a> </div></td>
+                <td><div class="button-group"> <a class="button border-blue" href="javascript:void(0)" onclick="window.location.href='Edit?ID=@Model[i].ID'"><span class="icon-edit"></span>编辑</a> </div></td>
+            </tr>
+            }
+            <tr>
+                <td colspan="8"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+
+
+<script type="text/javascript">
+
+    function del(id) {
+        if (confirm("您确定要删除吗?")) {
+            $.post(
+                "Del",
+                { "id": id},
+                function (data) {
+                    if (data) {
+                        window.location.href = 'Index';
+                    }
+                },
+                "json");
+        }
+    }
+    ///*全选，反选*/
+    //$("#checkall").click(function () {
+    //    $("input[id='only']").each(function () {
+    //        if (this.checked) {
+    //            this.checked = false;
+    //        }
+    //        else {
+    //            this.checked = true;
+    //        }
+    //    });
+    //})
+    
+    //function DelSelect() {
+    //    var Checkbox = false;
+    //    $("input[id='only']").each(function () {
+    //        if (this.checked == true) {
+    //            Checkbox = true;
+    //        }
+    //    });
+    //    obj = document.getElementsByName("Test");
+    //    selectID = [];
+    //    for (k in obj) {
+    //        if (obj[k].checked)
+    //            selectID.push(obj[k].value);
+    //    }
+    //    if (Checkbox) {
+    //        var t = confirm("您确认要删除选中的内容吗？");
+    //        if (t) {
+    //            $.post(
+    //                "DelAll",
+    //                { "id": selectID },
+    //                function (data) {
+    //                    if (data) {
+    //                        window.location.href = 'index';
+    //                    }
+    //                },
+    //                "json");
+    //        }
+    //        if (t == false) return false;
+    //    }
+    //    else {
+    //        alert("请选择您要删除的内容!");
+    //        return false;
+    //    }
+    //}
+</script>

@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "逐梦军团";
+}<!--头部-->
+<div class="banner">
+    <!--轮播图片-->
+    <div class="bd">
+        <ul>
+            <li><a href="#" style="background:url(/img/563_src.jpg) no-repeat center 0;background-size:100% 100%;"></a></li>
+            <li><a href="#" style="background:url(/img/1962_src.jpg) no-repeat center 0;background-size:100% 100%;"></a></li>
+            <li><a href="#" style="background:url(/img/1059_src.jpg) no-repeat center 0;background-size:100% 100%;"></a></li>
+            <li><a href="#" style="background:url(/img/2017_src.png) no-repeat center 0;background-size:100% 100%;"></a></li>
+            <li><a href="#" style="background:url(/img/1154_src.jpg) no-repeat center 0;background-size:100% 100%;"></a></li>
+            <li><a href="#" style="background:url(/img/408_src.jpg) no-repeat center 0;background-size:100% 100%;"></a></li>
+        </ul>
+    </div>
+    <!--轮播点点-->
+    <div class="hd">
+        <ul>
+            <li class="rounded"></li>
+            <li class="rounded"></li>
+            <li class="rounded"></li>
+            <li class="rounded"></li>
+            <li class="rounded"></li>
+            <li class="rounded"></li>
+        </ul>
+    </div>
+</div>
+<!--主体-->
+<ul class="beijing index1">
+
+    <li class="index1_bg1" style="background: url(/img/802_src.jpg) no-repeat 0 0;">
+        <a href="/AboutUs/Index">
+            <p style="text-align:center;font-size:19px" >关于我们</p>
+        </a>
+    </li>
+    <li class="index1_bg2" style="background: url(/img/803_src.jpg) no-repeat 0 0;">
+        <a href="/News/Index">
+            <p style="text-align:center;font-size:19px">新 闻</p>
+        </a>
+    </li>
+    <li class="index1_bg3" style="background: url(/img/804_src.jpg) no-repeat 0 0;">
+        <a href="/Page/Index">
+            <p style="text-align:center;font-size:19px">人员介绍</p>
+        </a>
+    </li>
+    <li class="index1_bg4" style="background: url(/img/801_src.jpg) no-repeat 0 0;">
+        <a href="/JoinUs/Index"> 
+            <p style="text-align:center;font-size:19px">加入我们</p>
+        </a>
+    </li>
+</ul>
+@section Scripts{
+    <script language="javascript" type="text/javascript">
+        jQuery(".banner").slide({ mainCell: ".bd ul", effect: "fold", autoPlay: true, interTime: 5000 });
+        jQuery(".index_2").slide({ mainCell: "ul.bd.htm", effect: "topLoop", autoPlay: true, interTime: 5000 });
+    </script>
+    <script src="~/js/xmsz_common.js"></script>
+    <!--[if IE 6]><script src="~/js/pngfix.js"></script><![endif]-->
+}

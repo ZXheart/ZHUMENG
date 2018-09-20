@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "个人详情";
+    var news = ViewBag.Page as Page;
+    //var comments = ViewBag.Comments as List<Comment>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main_banner" style="background-image: url(/img/1843_src.jpg);">
+    <img src="img/lie.jpg" alt="">
+</div>2
+<div>您的当前位置——<a href="/Page/Index">人员列表</a>——<a href="#" style="color:red">个人介绍</a></div>
+<div class="beijing1">
+    <div class="qi_feng_yi">
+        <h1>@news.Name</h1>
+        <p>加入时间：@news.AddTime 责任编辑：admin</p>
+    </div>
+    <div class="qi_feng_er">
+        <h4 style="text-indent: 2em;">年龄:@news.Age</h4>
+        <p>介绍：@Html.Raw(news.Content)</p>
+        <p>爱好：@news.Hobby</p>
+        <p>职位：@news.Position</p>
+        <p>标签：@news.Identity</p>
+    </div>
+</div>
+
